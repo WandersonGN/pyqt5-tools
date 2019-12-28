@@ -3,7 +3,7 @@ import sys
 
 import build
 import setuptools
-import vcversioner
+"""import vcversioner
 
 PYQT5_VERSION = os.environ.get('PYQT5_VERSION')
 version = vcversioner.find_version(
@@ -19,7 +19,7 @@ def pad_version(v):
 version = '.'.join((
     pad_version(PYQT5_VERSION),
     version.version,
-))
+))"""
 
 sys.stderr.write('another stderr test from {}\n'.format(__file__))
 
@@ -65,12 +65,12 @@ setuptools.setup(
     ],
     packages=setuptools.find_packages('src'),
     package_dir={'': 'src'},
-    version=version,
+    #version=version,
     include_package_data=True,
     install_requires=[
         'click',
         'python-dotenv',
-        'pyqt5{}'.format(('==' + PYQT5_VERSION) if PYQT5_VERSION else ''),
+        'pyqt5'#{}'.format(('==' + PYQT5_VERSION) if PYQT5_VERSION else ''),
     ],
     entry_points={
         'console_scripts': console_scripts,
