@@ -5,6 +5,7 @@ import build
 import setuptools
 import vcversioner
 
+PYQT5_VERSION = os.environ.get('PYQT5_VERSION')
 version = vcversioner.find_version(
         version_module_paths=['_version.py'],
         vcs_args=['git', '--git-dir', '%(root)s/.git', 'describe',
@@ -16,7 +17,7 @@ def pad_version(v):
     return '.'.join(split + ['0'] * (3 - len(split)))
 
 version = '.'.join((
-    pad_version(os.environ['PYQT5_VERSION']),
+    pad_version(PYQT5_VERSION),
     version.version,
 ))
 
@@ -69,7 +70,7 @@ setuptools.setup(
     install_requires=[
         'click',
         'python-dotenv',
-        'pyqt5=={}'.format(os.environ['PYQT5_VERSION']),
+        'pyqt5{}'.format(('==' + PYQT5_VERSION) if PYQT5_VERSION else ''),
     ],
     entry_points={
         'console_scripts': console_scripts,
